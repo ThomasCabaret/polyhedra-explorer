@@ -1,0 +1,19 @@
+# Dependencies and generated output
+node_modules/
+coverage/
+dist/
+build/
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0b0e14" />
+  <title>Face-Neighbourly Polyhedra Explorer</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <section id="viewport" aria-label="Interactive 3D polyhedron viewer">
+      <canvas id="scene-canvas"></canvas>
+      <div id="viewport-hud" class="hud">
+        <div id="mode-hint" class="hint">Orbit: drag to rotate around the locked center; wheel or pinch to zoom.</div>
+        <div id="fly-hint" class="hint hidden">Fly: click the view to capture the mouse. WASD move, Q/E down/up, Shift boosts, Esc releases.</div>
+      </div>
+      <div id="crosshair" class="crosshair hidden" aria-hidden="true"></div>
+      <button id="panel-toggle" class="panel-toggle" type="button" aria-label="Toggle controls">Controls</button>
+    </section>
+
+    <aside id="panel" class="panel" aria-label="Viewer controls">
+      <header class="brand">
+        <div class="eyebrow">Interactive geometry</div>
+        <h1>Face-Neighbourly Polyhedra</h1>
+        <p>Three realizations, one camera, exact published coordinates.</p>
+      </header>
+
+      <section class="control-section" aria-labelledby="models-heading">
+        <h2 id="models-heading">Model</h2>
+        <div id="model-buttons" class="model-buttons" role="group" aria-label="Choose a polyhedron"></div>
+      </section>
+
+      <section id="model-info" class="model-info" aria-live="polite">
+        <div class="model-title-row">
+          <div>
+            <div id="model-date" class="eyebrow"></div>
+            <h2 id="model-title"></h2>
+          </div>
+          <span id="model-genus" class="genus-badge"></span>
+        </div>
+        <div id="model-stats" class="stats"></div>
+        <p id="model-description"></p>
+        <a id="model-reference" class="paper-link" href="#" target="_blank" rel="noopener noreferrer">Open reference</a>
+      </section>
+
+      <section class="control-section" aria-labelledby="navigation-heading">
+        <h2 id="navigation-heading">Navigation</h2>
+        <div class="segmented" role="group" aria-label="Navigation mode">
+          <button id="orbit-mode" class="active" type="button">Orbit</button>
+          <button id="fly-mode" type="button">Fly</button>
+        </div>
+        <div class="button-grid">
+          <button id="fit-view" type="button">Fit</button>
+          <button id="front-view" type="button">Front</button>
+          <button id="top-view" type="button">Top</button>
+          <button id="side-view" type="button">Side</button>
+        </div>
+        <label class="check-row"><input id="auto-rotate" type="checkbox" /> <span>Auto-rotate</span></label>
+        <label class="range-row">
+          <span>Fly speed <output id="fly-speed-value">1.0x</output></span>
+          <input id="fly-speed" type="range" min="0.25" max="4" step="0.25" value="1" />
+        </label>
+      </section>
+
+      <section class="control-section" aria-labelledby="appearance-heading">
+        <h2 id="appearance-heading">Appearance</h2>
+        <label class="range-row">
+          <span>Face opacity <output id="opacity-value">82%</output></span>
+          <input id="face-opacity" type="range" min="0" max="1" step="0.01" value="0.82" />
+        </label>
+        <label class="range-row">
+          <span>Edge thickness <output id="edge-thickness-value">1.0x</output></span>
+          <input id="edge-thickness" type="range" min="0.35" max="2.5" step="0.05" value="1" />
+        </label>
+        <div class="checks">
+          <label class="check-row"><input id="show-faces" type="checkbox" checked /> <span>Faces</span></label>
+          <label class="check-row"><input id="show-edges" type="checkbox" checked /> <span>Edges</span></label>
+          <label class="check-row"><input id="show-vertices" type="checkbox" /> <span>Vertices</span></label>
+        </div>
+      </section>
+
+      <section class="control-section" aria-labelledby="inspection-heading">
+        <h2 id="inspection-heading">Inspection</h2>
+        <p class="small-copy">Click a face in Orbit mode to inspect it.</p>
+        <div id="selection-card" class="selection-card empty">No face selected.</div>
+        <button id="clear-selection" class="full-width" type="button" disabled>Clear selection</button>
+      </section>
+
+      <footer class="panel-footer">
+        <p>Three.js r186.1. Static site; no backend and no tracking.</p>
+        <a href="./sources.html">Data sources & attribution</a>
+      </footer>
+    </aside>
+  </main>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

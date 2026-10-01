@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0b0e14" />
+  <title>Data Sources - Face-Neighbourly Polyhedra Explorer</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <style>
+    body { overflow: auto; background: #080b11; }
+    .sources-page { max-width: 860px; margin: 0 auto; padding: 48px 22px 80px; line-height: 1.6; }
+    .sources-page h1 { font-size: 32px; letter-spacing: -0.03em; }
+    .sources-page h2 { margin-top: 36px; }
+    .sources-page p, .sources-page li { color: #b9c2cf; }
+    .sources-page code { color: #d9e7f8; }
+    .sources-page a { overflow-wrap: anywhere; }
+    .back-link { display: inline-block; margin-bottom: 24px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="sources-page">
+    <a class="back-link" href="./">Back to the 3D explorer</a>
+    <div class="eyebrow">Provenance</div>
+    <h1>Geometry data sources and attribution</h1>
+    <p>The viewer stores published vertex coordinates and face-boundary data as readable JavaScript arrays. The goal is to keep the visualization auditable rather than hiding the geometry inside opaque mesh files.</p>
+
+    <h2>Szilassi polyhedron</h2>
+    <ul>
+      <li>Lajos Szilassi, <em>Regular Toroids</em>, Structural Topology 13 (1986), pp. 69-80. The polyhedron was discovered in 1977. <a href="https://upcommons.upc.edu/handle/2099/573">Open reference</a>.</li>
+      <li>The coordinate realization used here is derived from the Python source published with <em>Szilassi polyhedron.stl</em> by Wikimedia Commons user Cmglee. <a href="https://commons.wikimedia.org/wiki/File:Szilassi_polyhedron.stl">Open source data</a>. Source license: CC BY-SA 4.0.</li>
+      <li>The two hexagons stored there as pairs of coplanar quadrilaterals are represented by their six-vertex boundary cycles so the browser can triangulate each complete polygon.</li>
+    </ul>
+
+    <h2>Mizhaev genus-3 octahedron</h2>
+    <ul>
+      <li>Ruslan Mizhaev, <em>Integer Realization of an Equivelar Octahedron of Genus 3</em>, arXiv:2609.17700, submitted 15 September 2026. <a href="https://arxiv.org/abs/2609.17700">Abstract</a>; <a href="https://arxiv.org/html/2609.17700v1">coordinate tables</a>.</li>
+      <li>The viewer transcribes the 24 integer vertex coordinates and eight cyclic nonagonal face walks from the paper's coordinate certificate.</li>
+    </ul>
+
+    <h2>Rost-Vigh genus-3 polyhedron</h2>
+    <ul>
+      <li>Gergely Rost and Viktor Vigh, <em>A second eight-faced polyhedron in which every two faces share an edge</em>, arXiv:2609.32998, submitted 26 September 2026. <a href="https://arxiv.org/abs/2609.32998">Abstract</a>; <a href="https://arxiv.org/html/2609.32998">coordinate tables</a>.</li>
+      <li>The viewer transcribes the 24 rational vertex coordinates and eight nonagonal boundary cycles reported in the paper.</li>
+      <li>The arXiv paper is marked CC BY-NC-ND 4.0. This repository does not relicense the paper or its prose/figures; the publication is cited as the source of the mathematical coordinate and incidence data used by this independent visualization.</li>
+    </ul>
+
+    <h2>Software</h2>
+    <p>Three.js r186.1 is loaded as a pinned ES module from jsDelivr. Three.js is MIT licensed. The explorer's own HTML, CSS and JavaScript code is released under the MIT License in the repository.</p>
+  </main>
+</body>
+</html>

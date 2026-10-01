@@ -1,0 +1,156 @@
+const oneBased = (indices) => indices.map((value) => value - 1);
+
+export const MODELS = {
+  szilassi: {
+    id: "szilassi",
+    shortName: "Szilassi",
+    title: "Szilassi polyhedron",
+    date: "1977 discovery; 1986 reference",
+    author: "Lajos Szilassi",
+    referenceLabel: "L. Szilassi, Regular Toroids, Structural Topology 13 (1986)",
+    referenceUrl: "https://upcommons.upc.edu/handle/2099/573",
+    dataUrl: "https://commons.wikimedia.org/wiki/File:Szilassi_polyhedron.stl",
+    description:
+      "A genus-1 toroidal polyhedron with seven planar hexagonal faces. Every pair of faces shares exactly one edge, so its face-adjacency graph is K7. It is combinatorially dual to the Csaszar polyhedron.",
+    symmetry: "Half-turn symmetry",
+    faceType: "7 hexagons",
+    expected: { vertices: 14, edges: 21, faces: 7, genus: 1 },
+    vertices: [
+      [-240, 0, 240],
+      [240, 0, 240],
+      [0, -252, -240],
+      [0, 252, -240],
+      [40, -100, -160],
+      [-40, 100, -160],
+      [-75, -75, -60],
+      [75, 75, -60],
+      [90, -50, 40],
+      [-90, 50, 40],
+      [-140, 0, 40],
+      [140, 0, 40],
+      [-140, -50, 40],
+      [140, 50, 40]
+    ],
+    faceNames: ["F1", "F2", "F3", "F4", "F5", "F6", "F7"],
+    faces: [
+      [11, 13, 9, 10, 12, 8],
+      [6, 4, 2, 10, 9, 7],
+      [7, 5, 3, 11, 8, 6],
+      [9, 13, 1, 0, 5, 7],
+      [8, 12, 0, 1, 4, 6],
+      [10, 2, 3, 5, 0, 12],
+      [11, 3, 2, 4, 1, 13]
+    ],
+    vertexLabel: (index) => ["G", "H", "B", "M", "C", "L", "D", "K", "E", "J", "A", "N", "F", "I"][index]
+  },
+
+  mizhaev: {
+    id: "mizhaev",
+    shortName: "Mizhaev 2026",
+    title: "Mizhaev genus-3 octahedron",
+    date: "15 September 2026",
+    author: "Ruslan Mizhaev",
+    referenceLabel: "Integer Realization of an Equivelar Octahedron of Genus 3, arXiv:2609.17700",
+    referenceUrl: "https://arxiv.org/abs/2609.17700",
+    dataUrl: "https://arxiv.org/html/2609.17700v1",
+    description:
+      "An eight-faced equivelar surface of type {9,3} and genus 3. All faces are simple nonagons. Every face pair is adjacent: 20 pairs share one edge and 8 pairs share two edges. This 2026 certificate uses exact integer coordinates.",
+    symmetry: "C4 rotoreflection symmetry",
+    faceType: "8 nonagons",
+    expected: { vertices: 24, edges: 36, faces: 8, genus: 3 },
+    vertices: [
+      [-72, 84, 18],
+      [-36, 112, 102],
+      [72, -84, 18],
+      [36, -112, 102],
+      [0, 300, 234],
+      [-84, 48, -18],
+      [9, 147, 207],
+      [0, -300, 234],
+      [84, -48, -18],
+      [-112, -36, -102],
+      [48, 84, 18],
+      [-147, 9, -207],
+      [-9, -147, 207],
+      [84, 72, -18],
+      [112, 36, -102],
+      [-48, -84, 18],
+      [147, -9, -207],
+      [-18, 126, 144],
+      [-126, -18, -144],
+      [-300, 0, -234],
+      [-84, -72, -18],
+      [18, -126, 144],
+      [126, 18, -144],
+      [300, 0, -234]
+    ],
+    faceNames: ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8"],
+    faces: [
+      oneBased([6, 10, 16, 22, 18, 7, 5, 1, 2]),
+      oneBased([9, 15, 11, 18, 22, 13, 8, 3, 4]),
+      oneBased([7, 5, 8, 3, 17, 23, 9, 15, 14]),
+      oneBased([13, 8, 5, 1, 12, 19, 6, 10, 21]),
+      oneBased([1, 2, 11, 18, 7, 14, 24, 20, 12]),
+      oneBased([3, 4, 16, 22, 13, 21, 20, 24, 17]),
+      oneBased([14, 24, 17, 23, 19, 6, 2, 11, 15]),
+      oneBased([10, 21, 20, 12, 19, 23, 9, 4, 16])
+    ],
+    vertexLabel: (index) => String(index + 1)
+  },
+
+  rostVigh: {
+    id: "rostVigh",
+    shortName: "Rost-Vigh 2026",
+    title: "Rost-Vigh genus-3 polyhedron",
+    date: "26 September 2026",
+    author: "Gergely Rost and Viktor Vigh",
+    referenceLabel: "A second eight-faced polyhedron in which every two faces share an edge, arXiv:2609.32998",
+    referenceUrl: "https://arxiv.org/abs/2609.32998",
+    dataUrl: "https://arxiv.org/html/2609.32998",
+    description:
+      "A second eight-faced genus-3 realization with 24 vertices and 36 edges. It has the same 20 single-edge and 8 double-edge face-adjacency counts as Mizhaev's example, but a different combinatorial type. Its coordinates are rational and its geometric symmetry group is D2.",
+    symmetry: "D2 symmetry; chiral",
+    faceType: "8 nonagons",
+    expected: { vertices: 24, edges: 36, faces: 8, genus: 3 },
+    vertices: [
+      [-38 / 7, -57 / 14, -5 / 2],
+      [38 / 7, 57 / 14, -5 / 2],
+      [-38 / 7, 57 / 14, 5 / 2],
+      [38 / 7, -57 / 14, 5 / 2],
+      [5 / 3, -1 / 15, 2 / 15],
+      [-5 / 3, 1 / 15, 2 / 15],
+      [5 / 3, 1 / 15, -2 / 15],
+      [-5 / 3, -1 / 15, -2 / 15],
+      [-37 / 38, -5 / 4, -111 / 76],
+      [37 / 38, 5 / 4, -111 / 76],
+      [-37 / 38, 5 / 4, 111 / 76],
+      [37 / 38, -5 / 4, 111 / 76],
+      [13 / 11, -3 / 5, 26 / 55],
+      [-13 / 11, 3 / 5, 26 / 55],
+      [13 / 11, 3 / 5, -26 / 55],
+      [-13 / 11, -3 / 5, -26 / 55],
+      [3 / 2, -1 / 4, 1 / 4],
+      [-3 / 2, 1 / 4, 1 / 4],
+      [3 / 2, 1 / 4, -1 / 4],
+      [-3 / 2, -1 / 4, -1 / 4],
+      [31 / 23, -62 / 115, 3 / 5],
+      [-31 / 23, 62 / 115, 3 / 5],
+      [31 / 23, 62 / 115, -3 / 5],
+      [-31 / 23, -62 / 115, -3 / 5]
+    ],
+    faceNames: ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4"],
+    faces: [
+      oneBased([1, 2, 5, 7, 17, 13, 21, 12, 9]),
+      oneBased([6, 8, 18, 14, 22, 11, 10, 2, 1]),
+      oneBased([7, 5, 19, 15, 23, 10, 11, 3, 4]),
+      oneBased([4, 3, 8, 6, 20, 16, 24, 9, 12]),
+      oneBased([1, 9, 24, 23, 15, 14, 18, 20, 6]),
+      oneBased([13, 17, 19, 5, 2, 10, 23, 24, 16]),
+      oneBased([21, 13, 16, 20, 18, 8, 3, 11, 22]),
+      oneBased([4, 12, 21, 22, 14, 15, 19, 17, 7])
+    ],
+    vertexLabel: (index) => String(index + 1)
+  }
+};
+
+export const MODEL_ORDER = ["szilassi", "mizhaev", "rostVigh"];
