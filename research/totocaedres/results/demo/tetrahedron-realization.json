@@ -1,0 +1,96 @@
+{
+  "geometry": {
+    "certificate": {
+      "absolute_volume": 0.5094004433927635,
+      "disjoint_triangle_intersections": 0,
+      "errors": [],
+      "max_planarity_error": 5.2695285973943885e-17,
+      "min_edge_length": 1.6289528160468272,
+      "min_vertex_distance": 1.6289528160468272,
+      "numerical": true,
+      "tolerances": {
+        "edge_length": 1e-05,
+        "intersection": 1e-09,
+        "planarity": 1e-07,
+        "vertex_distance": 1e-05,
+        "volume": 1e-08
+      },
+      "triangle_count": 4,
+      "valid": true
+    },
+    "coordinates": [
+      [
+        0.5689500295811052,
+        0.5846838916751675,
+        0.5740194933427114
+      ],
+      [
+        0.5826926180512976,
+        -0.5642210939579096,
+        -0.5806734321385552
+      ],
+      [
+        -0.5893965289735051,
+        0.5669746617691899,
+        -0.5711473832587832
+      ],
+      [
+        -0.5622461187291197,
+        -0.587437459315728,
+        0.5778013219307524
+      ]
+    ],
+    "message": "`ftol` termination condition is satisfied.",
+    "objective": 0.01528803933767525,
+    "restarts": 1,
+    "schema": "totocaedres.geometry-result.v1",
+    "success": true
+  },
+  "surface": {
+    "alpha": [
+      3,
+      9,
+      6,
+      0,
+      8,
+      10,
+      2,
+      11,
+      4,
+      1,
+      5,
+      7
+    ],
+    "boundaries": [
+      [
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      [
+        [
+          3,
+          4,
+          5
+        ]
+      ],
+      [
+        [
+          6,
+          7,
+          8
+        ]
+      ],
+      [
+        [
+          9,
+          10,
+          11
+        ]
+      ]
+    ],
+    "schema": "totocaedres.surface-map.v1"
+  }
+}

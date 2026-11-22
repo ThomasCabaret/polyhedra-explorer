@@ -1,0 +1,612 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=28mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\binomFtwo}{\binom{F}{2}}
+\newcommand{\binomFthree}{\binom{F}{3}}
+
+\title{Finiteness and Obstruction Bounds for\\
+Face-Neighbourly Polyhedral Surfaces}
+\author{Totocaedres project --- mathematical research note}
+\date{21 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study closed orientable polyhedral surfaces embedded in $\R^3$ whose
+planar faces are pairwise adjacent along at least one non-degenerate segment.
+Faces may be non-convex, may have polygonal holes, and may meet the same face
+along several disjoint segments; additional point contacts are allowed.  We
+derive explicit necessary bounds that turn every fixed-genus search into a
+finite combinatorial problem.  In particular, a genus-$g$ candidate has at
+most $2g$ holes in all of its faces, and its number of faces is bounded by an
+explicit quadratic inequality.
+
+Every reduced vertex is an isolated intersection of three incident support
+planes. This gives bounds on holes, contacts, and genus at a given face count,
+including when several planes share a line. We prove that global finiteness
+of the combinatorial search is equivalent to a universal bound on the number
+of faces, or equivalently on the genus. We also give necessary conditions on
+common support lines and on faces that straddle other support planes. The
+existence of a universal bound remains unresolved. The geometric bounds
+exclude exactly five faces even when holes and extra contacts are allowed.
+\end{abstract}
+
+\section{Model and notation}
+
+Let $S\subset\R^3$ be the boundary of a compact connected set with non-empty
+interior.  We assume that $S$ is a connected, closed, orientable, embedded
+polyhedral $2$-manifold.  It is decomposed into $F\geq4$ connected planar
+faces.  Face $i$ is a compact planar region of genus zero with
+$b_i=h_i+1$ pairwise disjoint simple polygonal boundary components.  Every
+boundary component has at least three edges.  Put
+\[
+    H=\sum_{i=1}^{F} h_i.
+\]
+
+The subdivision has $V$ vertices and $E$ edges.  Every edge belongs to two
+distinct faces with different support planes. We count maximal planar faces
+and exclude artificial seams between coplanar regions. Artificial degree-two
+vertices have been suppressed, and a
+face occurs at most once in the cyclic link of a vertex.  Consequently
+\[
+    3\leq \deg(v)\leq F.
+\]
+The principal problem considered here requires every pair of distinct faces
+to share at least one positive-length edge.  For a pair $i<j$, let
+\begin{itemize}
+\item $m_{ij}$ be the number of subdivision edges incident with faces $i,j$;
+\item $s_{ij}$ be the number of connected components of their shared-edge
+      subgraph;
+\item $p_{ij}$ be the number of vertices at which $i,j$ meet but no
+      $ij$-edge is incident.
+\end{itemize}
+Thus $m_{ij}\geq s_{ij}\geq1$, while $p_{ij}$ may be positive in addition.
+Define
+\[
+  M=E-\binomFtwo=\sum_{i<j}(m_{ij}-1),
+  \qquad
+  D=\sum_v(\deg(v)-3).
+\]
+Both $M$ and $D$ are non-negative.  The genus of $S$ is denoted by $g$.
+
+\section{Universal combinatorial bounds}
+
+The first results do not use coordinates, supporting planes, convexity, or a
+general-position assumption.
+
+\begin{theorem}[master identity]\label{thm:master}
+Every surface in the model satisfies
+\begin{equation}\label{eq:master}
+  12g=(F-3)(F-4)+2M+2D+6H.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A planar face with $h_i$ holes has Euler characteristic $1-h_i$.
+Additivity of Euler characteristic for the face decomposition gives
+\[
+  V-E+F-H=2-2g.
+\]
+The degree sum is $2E=3V+D$.  Eliminating $V$, and then substituting
+$E=\binomFtwo+M$, gives \eqref{eq:master}.
+\end{proof}
+
+\begin{theorem}[finite fixed-genus layer]\label{thm:fixed-genus}
+Fix $g\geq0$ and define
+\[
+  R(g,F)=12g-(F-3)(F-4).
+\]
+Every feasible signature satisfies
+\begin{align}
+ F &\leq
+ \left\lfloor\frac{7+\sqrt{48g+1}}{2}\right\rfloor,
+ \label{eq:Fbound}\\
+ R(g,F)&\geq0,\label{eq:Rpositive}\\
+ M+D+3H&=\frac{R(g,F)}2,\label{eq:budget}\\
+ H&\leq\left\lfloor\frac{R(g,F)}6\right\rfloor\leq2g,
+ \label{eq:Hgenus}\\
+ M,D&\leq\frac{R(g,F)}2.\label{eq:MDgenus}
+\end{align}
+In particular, only finitely many integer tuples $(F,M,D,H,E,V)$ occur at a
+fixed genus.
+\end{theorem}
+
+\begin{proof}
+All terms following $(F-3)(F-4)$ in \eqref{eq:master} are non-negative.
+Therefore $(F-3)(F-4)\leq12g$, whose upper root is
+\eqref{eq:Fbound}.  The remaining statements follow by rearranging
+\eqref{eq:master}.  Finally,
+\[
+  E=\binomFtwo+M,
+  \qquad
+  V=\frac{2E-D}{3},
+\]
+so $E$ and $V$ also range over finite sets.
+\end{proof}
+
+\begin{corollary}[hole obstruction]\label{cor:holes}
+No genus-$g$ candidate in the principal problem can have more than $2g$
+polygonal holes in all faces combined.  More sharply, after $F$ is fixed,
+\[
+ H\leq
+ \left\lfloor
+ 2g-\frac{(F-3)(F-4)}6
+ \right\rfloor.
+\]
+Every unit of $M$ or $D$ consumes the same budget as one unit on the
+right-hand side of \eqref{eq:budget}, while one face hole consumes three
+units.
+\end{corollary}
+
+This is already enough to make a complete search through all genera
+$0\leq g\leq G$ finite.  It does not merely bound a list of numerical
+parameters: for fixed $E$ there are finitely many involutions pairing the
+$2E$ darts, finitely many assignments of darts to faces, and finitely many
+boundary permutations.  Quotienting by relabelling reduces this finite set
+but is not required for finiteness.
+
+\subsection{Additional universal filters}
+
+\begin{lemma}[contour capacity]\label{lem:contours}
+Every candidate satisfies
+\begin{equation}\label{eq:contourcapacity}
+  3(F+H)\leq2E=F(F-1)+2M.
+\end{equation}
+Equivalently,
+\[
+ H\leq\left\lfloor\frac{2E}{3}\right\rfloor-F,
+ \qquad
+ M\geq
+ \left\lceil\frac{3H-F(F-4)}2\right\rceil
+\]
+whenever the latter lower bound is positive.
+\end{lemma}
+
+\begin{proof}
+There are $F+H=\sum_i b_i$ boundary components.  Each contains at least
+three edge occurrences, and every edge occurs in exactly two face
+boundaries.
+\end{proof}
+
+\begin{lemma}[degree capacity]\label{lem:degree}
+One has
+\[
+  D\leq(F-3)V,
+  \qquad
+  V\geq\left\lceil\frac{2E}{F}\right\rceil,
+  \qquad
+  D\leq\left\lfloor\frac{2E(F-3)}{F}\right\rfloor.
+\]
+Moreover $2E-D$ must be a non-negative multiple of three.
+\end{lemma}
+
+\begin{proof}
+No face repeats in a vertex link, so $\deg(v)\leq F$.  Summing this
+inequality and using $2E=3V+D$ proves the claims.
+\end{proof}
+
+The inequalities in Lemmas~\ref{lem:contours} and~\ref{lem:degree} should be
+applied before any rotation-system enumeration.  They reject necessary
+integer signatures, not merely geometric guesses.
+
+\section{Support-plane bounds with degeneracies}\label{sec:planes}
+
+Let $\Pi_i$ be the supporting plane of face $i$. The contact requirement and
+the convention on coplanar seams imply that every two support planes are
+distinct and nonparallel. Several planes can share a line or meet at a
+single point.
+
+\begin{lemma}[finite vertex set]\label{lem:vertices}
+Every vertex is the unique intersection of a triple of incident support
+planes. In particular,
+\begin{equation}\label{eq:Varr}
+  V\leq\binomFthree.
+\end{equation}
+For a fixed face $i$, the number $N_i$ of vertices on all its boundary
+components satisfies
+\begin{equation}\label{eq:Niface}
+  N_i\leq\binom{F-1}{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The normals of the planes incident with a vertex have rank at least two.
+If their rank were two, all the incident planes would contain the same
+line through the vertex. Every incident edge would then lie on that line:
+its two incident planes are distinct and intersect in that line. At most two
+edges with disjoint relative interiors can emanate from a point along one
+line, one in each direction. This contradicts $\deg(v)\geq3$. Thus the
+incident normals have rank three.
+
+Assign to each vertex the lexicographically first independent triple of
+incident planes. The triple determines a unique point, so the assignment
+is injective. For a vertex on face $i$, extend the normal of $\Pi_i$ to a
+basis using two of the other incident normals. The resulting pair identifies
+the vertex uniquely on $\Pi_i$.
+\end{proof}
+
+\begin{theorem}[holes per face]\label{thm:arr-holes}
+Put
+\[
+  q_F=\left\lfloor\frac{(F-1)(F-2)}6\right\rfloor.
+\]
+Every face and the total surface satisfy
+\begin{equation}\label{eq:arr-holes}
+  b_i\leq q_F,
+  \qquad
+  h_i\leq q_F-1,
+  \qquad
+  H\leq F(q_F-1).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The boundary components of one face are disjoint simple polygonal cycles, so
+their vertex sets are disjoint.  Every cycle has length at least three.
+Consequently $3b_i\leq N_i$.  Apply \eqref{eq:Niface} and sum over the
+faces.
+\end{proof}
+
+Theorem~\ref{thm:arr-holes} bounds the number of holes in terms of $F$ alone.
+
+\begin{theorem}[capacity of a face pair]\label{thm:paircapacity}
+For every pair $i<j$, let $L_{ij}=\Pi_i\cap\Pi_j$ and let $k_L$ denote the
+number of support planes containing a given intersection line $L$. Then
+\begin{align}
+  m_{ij}&=s_{ij},\label{eq:edgepair}\\
+  2m_{ij}+p_{ij}&\leq F-k_{L_{ij}}\leq F-2.\label{eq:contactcapacity}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+At a reduced vertex the cyclic link is a cycle of length at least three of
+distinct face labels. An unordered pair of labels can occur at most once as
+consecutive labels, so two edges shared by the same pair cannot share an
+endpoint. This proves $m_{ij}=s_{ij}$. Their $2m_{ij}$ endpoints and the
+$p_{ij}$ isolated contact vertices are all distinct and lie on $L_{ij}$.
+The rank-three argument shows that each such vertex lies on at least one
+incident plane that does not contain the line. Each of the $F-k_{L_{ij}}$
+planes outside the pencil contributes at most one point on that line.
+\end{proof}
+
+\begin{corollary}[capacity of a common line]\label{cor:pencil}
+For any intersection line $L$ contained in $k_L$ support planes,
+\[
+  \sum_{\{i,j\}:L_{ij}=L}m_{ij}\ \leq\ F-k_L-1,
+  \qquad
+  F\ \geq\ k_L+\binom{k_L}{2}+1.
+\]
+\end{corollary}
+
+\begin{proof}
+Every edge on $L$ has endpoints among the at most $F-k_L$ intersection
+points with non-pencil planes. The edge interiors are disjoint and every
+edge uses at least one of the intervals between consecutive points. Each
+of the $\binom{k_L}{2}$ pairs in the pencil requires its own edge.
+\end{proof}
+
+\begin{theorem}[fixed-face genus bound]\label{thm:fixed-face}
+Put $C=\binom{F}{3}$ and define the integer bounds
+\begin{align}
+ E_*&=\min\left\{\binom{F}{2}\left\lfloor\frac{F-2}{2}\right\rfloor,
+                    \left\lfloor\frac{3C}{2}\right\rfloor\right\},\\
+ H_*&=\min\left\{F(q_F-1),\ \left\lfloor\frac{2E_*}{3}\right\rfloor-F\right\}.
+\end{align}
+Every realization satisfies $E\le E_*$, $H\le H_*$, and
+\begin{equation}\label{eq:Gdisk}
+ g\leq \left\lfloor 1-\frac{F}{2}+\frac{C}{4}+\frac{H}{2}\right\rfloor
+ \leq \left\lfloor 1-\frac{F}{2}+\frac{C}{4}+\frac{H_*}{2}\right\rfloor.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For each pair, the number of vertices incident with both faces is at most
+$F-2$ by Theorem~\ref{thm:paircapacity}. Summing gives
+\[
+ \sum_v\binom{\deg(v)}{2}\leq \binom{F}{2}(F-2)=3C .
+\]
+For every integer $d\geq3$, $d\leq\binom{d}{2}$ and
+$d/2-1\leq\binom{d}{2}/6$, the latter since $(d-3)(d-4)\geq0$.
+The degree sum gives $2E\leq3C$ and $E-V\leq C/2$. The first bound in
+$E_*$ follows by summing \eqref{eq:contactcapacity}. The contour capacity
+\eqref{eq:contourcapacity} and Theorem~\ref{thm:arr-holes} bound $H$.
+The genus estimate follows from $g=1+(E-V-F+H)/2$.
+\end{proof}
+
+If all vertices are trivalent, $p_{ij}=0$ for every pair, since every pair of
+labels in a cyclic link of length three is consecutive.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+$F$ & $q_F$ & $H_*$ & $\lfloor(F-2)/2\rfloor$ & $E_*$ &
+Genus bound & With $H=0$\\
+\midrule
+4  & 1  & 0   & 1 & 6   & 0   & 0\\
+7  & 5  & 21  & 2 & 42  & 16  & 6\\
+8  & 7  & 48  & 3 & 84  & 35  & 11\\
+9  & 9  & 63  & 3 & 108 & 49  & 17\\
+12 & 18 & 204 & 5 & 330 & 152 & 50\\
+\bottomrule
+\end{tabular}
+\caption{Upper bounds with arbitrary support-plane degeneracies.}
+\label{tab:bounds}
+\end{table}
+
+\begin{corollary}[Exclusion of five faces]\label{cor:five}
+There is no realization with $F=5$ in the stated model.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:paircapacity} gives $m_{ij}\leq1$, so $E=10$.
+By Corollary~\ref{cor:pencil}, a line contained in three support planes
+would require at least seven faces. Therefore any three of the five
+planes have at most one point in common.
+
+A vertex of degree five would make all five planes concurrent.
+Lemma~\ref{lem:vertices} would then force every vertex to be that same
+point, which is impossible. Two vertices of degree four would have at
+least three incident face labels in common. They would give two common
+points of the corresponding three planes, also impossible. All vertices
+thus have degree three except for at most one of degree four, so $D\leq1$.
+But $3V+D=2E=20$ requires $D\equiv2\pmod3$, a contradiction.
+\end{proof}
+
+\section{The global question}\label{sec:global}
+
+\begin{theorem}[Equivalent forms of global finiteness]\label{thm:global}
+In the stated model the following properties are equivalent:
+\begin{enumerate}
+\item The set of realizable combinatorial types is finite.
+\item There is an absolute upper bound on $F$.
+\item There is an absolute upper bound on $g$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+A finite set of types supplies both bounds. An upper bound on $F$ bounds
+$E$ by Theorem~\ref{thm:fixed-face}. A map with at most that many edges is
+described by finitely many pairings and permutations of its darts and
+groupings of contour cycles into faces. An upper bound on $g$ bounds $F$
+by \eqref{eq:Fbound}. This proves the equivalence.
+\end{proof}
+
+Both the genus upper bound in \eqref{eq:Gdisk} and the Euler lower bound
+$(F-3)(F-4)/12$ grow with $F$. Their comparison leaves arbitrarily large
+values of $F$ compatible with the inequalities. The five-face exclusion
+and the seven-face Szilassi example illustrate why an empty layer cannot
+serve as a stopping criterion.
+
+\subsection{A necessary number of straddling pairs}
+
+Say that face $i$ \emph{straddles} plane $\Pi_j$ if it has points on both
+open sides of that plane. Call a pair straddling if either face straddles
+the plane of the other. Let $B$ count such pairs and let $T$ count triples
+of support planes with a common line.
+
+\begin{proposition}\label{prop:straddling}
+For $F\geq5$,
+\[
+ B \ \geq\ \max\left\{0,\
+ \left\lceil\frac{\binom{F}{2}}{10}-\frac{3T}{F-2}\right\rceil\right\},
+ \qquad
+ T\leq\frac{k_{\max}-2}{3}\binom{F}{2},
+ \quad
+ k_{\max}=\max_L k_L .
+\]
+In particular, $B\geq F^2/20-O(F^{3/2})$ as $F$ increases.
+\end{proposition}
+
+\begin{proof}
+Consider five faces with no straddling pair and no triple of support
+planes with a common line. Relative to the plane of any one of the
+five, each of the other four is entirely in a closed halfspace. If two
+were in opposite halfspaces, their shared segment would lie in three
+support planes, contrary to the choice of the five. Consequently each
+of the five planes supports the convex hull of the five faces. This
+hull is three-dimensional because the faces have positive area and
+distinct planes. Each face lies in a separate hull facet. Every shared
+segment lies on an edge between the corresponding facets. This would
+give a $K_5$ in the planar dual graph of a convex polyhedron.
+
+Every five-element set must therefore contain a straddling pair or a
+triple with a common line. Counting the five-element sets containing
+each of these yields
+\[
+ \binom{F}{5}\leq B\binom{F-2}{3}+T\binom{F-3}{2}.
+\]
+Each pair of planes determines exactly one line, so
+\[
+ T=\sum_L \binom{k_L}{3}
+   \leq \frac{k_{\max}-2}{3}\sum_L\binom{k_L}{2}
+   =\frac{k_{\max}-2}{3}\binom{F}{2}.
+\]
+Corollary~\ref{cor:pencil} gives $k_{\max}=O(\sqrt F)$.
+\end{proof}
+
+This extends the halfspace argument used for convex polygons in
+\cite{ArsenevaEtAl2024}. It gives a necessary condition for any unbounded
+family. A global upper bound by this route would require an incompatible
+upper estimate on straddling pairs from enclosure and connectedness.
+
+\subsection{An exact formulation using bounded chambers}
+
+\begin{proposition}\label{prop:chambers}
+The bounded solid enclosed by any realization is a union of closures of
+bounded three-dimensional chambers of its supporting-plane arrangement.
+\end{proposition}
+
+\begin{proof}
+A chamber is a connected component of the complement of the union of
+the planes. As the boundary of the solid lies in the union of the planes,
+each chamber lies entirely in its interior or entirely outside. An
+interior chamber is bounded. The interior of the solid is open and the
+union of the planes has empty interior. Interior chamber points are
+therefore dense in the solid, which is the closure of its bounded
+interior. There are finitely many chambers, so taking closures gives the
+claimed union.
+\end{proof}
+
+For a fixed arrangement one can enumerate chamber selections, take the
+boundary, and check the vertex links, connected planar regions and shared
+edges. A search across all $F$ would require a theorem uniform in the
+number of planes. The construction of arbitrary complete graphs as
+side-contact representations in \cite{ArsenevaEtAl2024} uses polygonal
+systems with boundary. Closing them while preserving complete adjacency
+is an additional requirement.
+
+\section{Consequences for exhaustive search}
+
+\subsection{A provably finite fixed-genus scheduler}
+
+For a requested maximum genus $G$, the following enumeration is complete at
+the level of abstract maps.
+\begin{enumerate}
+\item For $0\leq g\leq G$, enumerate $4\leq F\leq F_{\max}(g)$ using
+      \eqref{eq:Fbound}.
+\item Compute $R(g,F)$ and enumerate the finite solutions of
+      $M+D+3H=R/2$.
+\item Reject signatures violating contour capacity
+      \eqref{eq:contourcapacity}, degree capacity, or the integrality of
+      $V=(2E-D)/3$.
+\item Enumerate distributions of $M$ among the $\binomFtwo$ face pairs and
+      distributions of $H$ among the $F$ faces.
+\item Enumerate reduced rotation systems and quotient by face relabelling and
+      global orientation reversal.
+\end{enumerate}
+All loops are finite for the chosen $G$.
+
+\subsection{A provably finite fixed-face scheduler}
+
+With fixed $F$, a run needs no input genus bound.
+Theorems~\ref{thm:arr-holes}, \ref{thm:paircapacity}, and
+\ref{thm:fixed-face} provide finite ranges for $H$, every $m_{ij}$, $E$, and
+$g$. A finite face cap $F\leq F_*$ therefore gives a finite total search.
+
+\subsection{Machine-checkable pruning rules}
+
+The following filters are suitable for direct implementation before map
+generation:
+\[
+\begin{array}{ll}
+\text{universal:}&
+(F-3)(F-4)\leq12g,\quad
+M+D+3H=R/2,\\[2mm]
+&3(F+H)\leq F(F-1)+2M,\quad
+2E-D\equiv0\pmod3,\\[2mm]
+&0\leq D\leq 2E(F-3)/F;\\[2mm]
+\text{geometric:}&
+h_i\leq q_F-1,\quad
+2s_{ij}+p_{ij}\leq F-2,\\[2mm]
+&m_{ij}=s_{ij},\quad
+V\leq\binomFthree,\quad E\leq E_*.
+\end{array}
+\]
+Every rejection can be accompanied by the violated inequality, producing a
+small auditable impossibility certificate.
+
+\section{Geometric decision and stronger obstructions}
+
+For a fixed finite map, geometric realizability can in principle be written
+in the first-order theory of the real numbers.  Use variables for every vertex
+coordinate and every supporting plane.  Face incidences give polynomial
+equalities; distinct vertices, non-zero edge lengths, polygon simplicity,
+orientation, and the absence of unintended intersections give a finite
+Boolean combination of polynomial strict and weak inequalities. A finite
+disjunction over triangulations of the polygonal regions, including regions
+with holes, lets us express intersection conditions with triangle
+predicates. Quantifier elimination over real closed fields gives a
+termination theorem for each fixed map.
+
+This observation is theoretical rather than a practical algorithm: cylindrical
+algebraic decomposition can be doubly exponential.  A realistic obstruction
+pipeline should instead proceed as follows.
+\begin{enumerate}
+\item Apply the integer and arrangement bounds in this note.
+\item Encode signs of $4\times4$ affine determinants as a rank-four oriented
+      matroid feasibility problem.
+\item Use SAT/SMT to reject incompatible sign systems.
+\item Use exact nonlinear real arithmetic only for the surviving maps.
+\item Archive either exact coordinates or a solver-verifiable unsatisfiable
+      core.
+\end{enumerate}
+Schewe used the oriented-matroid/SAT strategy to prove non-realizability of
+minimal twelve-vertex triangulations of genus six.  That result concerns the
+vertex-neighbourly dual problem. Geometric realizability of the face-dual
+maps requires a separate argument \cite{Schewe2010,RostVigh2026}.
+
+\section{Status of the absolute bound}
+
+Theorem~\ref{thm:global} reduces the question to a single conjectural
+bound. A universal bound would yield a finite search. A family with
+unbounded $F$ would imply unbounded genus and disprove global finiteness.
+The plane and chamber arguments here establish neither outcome.
+General embedded polyhedral surfaces can have arbitrarily high genus
+\cite{Ziegler2005}. Their use here would require complete face adjacency.
+The genus-three examples \cite{Mizhaev2026,RostVigh2026} use non-convex faces.
+
+For trivalent disk faces with exactly one edge per face pair, the next
+combinatorial layer after $F=7$ is
+\[
+  F=12,\qquad E=66,\qquad V=44,\qquad g=6.
+\]
+There are 59 corresponding neighbourly triangulations in the dual
+combinatorial problem. R\"ost and V\'igh report that realizability of any
+of the twelve-face dual maps remains open \cite{RostVigh2026}. This is one
+specific layer without a resolution in the classical disk-face setting.
+
+\begin{thebibliography}{9}
+
+\bibitem{ArsenevaEtAl2024}
+E.~Arseneva, L.~Kleist, B.~Klemz, M.~L\"offler, A.~Schulz,
+B.~Vogtenhuber, and A.~Wolff,
+\emph{Adjacency Graphs of Polyhedral Surfaces},
+Discrete \& Computational Geometry 71 (2024), 1429--1455.
+\href{https://doi.org/10.1007/s00454-023-00537-6}{doi:10.1007/s00454-023-00537-6}.
+
+\bibitem{Mizhaev2026}
+R.~Mizhaev,
+\emph{Integer Realization of an Equivelar Octahedron of Genus 3},
+arXiv:2609.17700, 2026.
+\url{https://arxiv.org/abs/2609.17700}.
+
+\bibitem{RostVigh2026}
+G.~R\"ost and V.~V\'igh,
+\emph{A Second Eight-Faced Polyhedron in Which Every Two Faces Share an Edge},
+arXiv:2609.32998, 2026.
+\url{https://arxiv.org/abs/2609.32998}.
+
+\bibitem{Schewe2010}
+L.~Schewe,
+\emph{Nonrealizable Minimal Vertex Triangulations of Surfaces: Showing
+Nonrealizability Using Oriented Matroids and Satisfiability Solvers},
+Discrete \& Computational Geometry 43 (2010), 289--302.
+\href{https://doi.org/10.1007/s00454-009-9222-y}{doi:10.1007/s00454-009-9222-y}.
+
+\bibitem{Ziegler2005}
+G.~M.~Ziegler,
+\emph{Polyhedral Surfaces of High Genus},
+arXiv:math/0412093, 2004.
+\url{https://arxiv.org/abs/math/0412093}.
+
+\end{thebibliography}
+
+\end{document}

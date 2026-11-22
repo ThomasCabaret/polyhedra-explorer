@@ -1,0 +1,18 @@
+{
+  "schema": "totocaedres.discovery-campaign-config.v1",
+  "description": "Continuous offline discovery campaign. Edit budgets while stopped or between cycles.",
+  "max_genus": 3,
+  "max_faces": 9,
+  "max_extra_edges": 8,
+  "max_holes": 2,
+  "signatures_per_genus_per_cycle": 4,
+  "topology_trials_per_signature": 120,
+  "geometry_candidates_per_cycle": 4,
+  "geometry_trials_per_action": 150,
+  "initial_geometry_trials_per_action": 5000,
+  "max_symmetry_actions": 24,
+  "numerical_restarts": 1,
+  "numerical_max_nfev": 750,
+  "sleep_between_cycles_seconds": 2,
+  "seed": 2026112101
+}

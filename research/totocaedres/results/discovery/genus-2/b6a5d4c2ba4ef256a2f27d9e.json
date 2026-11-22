@@ -1,0 +1,224 @@
+{
+  "created_at": "2026-11-21T18:41:18+01:00",
+  "fingerprint": "b6a5d4c2ba4ef256a2f27d9e",
+  "geometry": {
+    "method": "numerical-planarity",
+    "result": {
+      "certificate": {
+        "absolute_volume": 2.0627449817678398e-09,
+        "disjoint_triangle_intersections": 0,
+        "errors": [
+          "the signed enclosed volume is zero or inconsistent"
+        ],
+        "max_planarity_error": 2.087370972622229e-09,
+        "min_edge_length": 0.8108958951339462,
+        "min_vertex_distance": 0.5771298768050254,
+        "numerical": true,
+        "tolerances": {
+          "edge_length": 1e-05,
+          "intersection": 1e-09,
+          "planarity": 1e-07,
+          "vertex_distance": 1e-05,
+          "volume": 1e-08
+        },
+        "triangle_count": 18,
+        "valid": false
+      },
+      "coordinates": [
+        [
+          -0.20094866979692427,
+          0.48511483350053547,
+          -0.15669892390366508
+        ],
+        [
+          0.4432344200792125,
+          -0.6706785545368614,
+          0.47631796130016124
+        ],
+        [
+          0.04173759782095618,
+          -1.3400169657708831,
+          -0.3730002239197824
+        ],
+        [
+          -0.03828223795313814,
+          -0.06339617570590043,
+          -0.08084248428558234
+        ],
+        [
+          0.25408722609511153,
+          0.4563985767264301,
+          0.5482273770842806
+        ],
+        [
+          -0.3869461098763927,
+          -0.3912114275393549,
+          -0.7354590268705808
+        ],
+        [
+          -0.11288275978520936,
+          1.5237895825005598,
+          0.32145500851800823
+        ]
+      ],
+      "message": "The maximum number of function evaluations is exceeded.",
+      "objective": 0.009326953599608185,
+      "restarts": 1,
+      "schema": "totocaedres.geometry-result.v1",
+      "success": false
+    }
+  },
+  "geometry_updated_at": "2026-11-21T18:41:25+01:00",
+  "schema": "totocaedres.discovery-candidate.v1",
+  "source": {
+    "cycle": 2651,
+    "method": "random bounded rotation system",
+    "signature": {
+      "degree_excess": 9,
+      "edges": 15,
+      "extra_edges": 0,
+      "faces": 6,
+      "genus": 2,
+      "holes": 0,
+      "vertices": 7
+    },
+    "trial": 894
+  },
+  "surface": {
+    "alpha": [
+      25,
+      9,
+      17,
+      11,
+      21,
+      22,
+      19,
+      12,
+      28,
+      1,
+      15,
+      3,
+      7,
+      26,
+      20,
+      10,
+      24,
+      2,
+      27,
+      6,
+      14,
+      4,
+      5,
+      29,
+      16,
+      0,
+      13,
+      18,
+      8,
+      23
+    ],
+    "boundaries": [
+      [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      [
+        [
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      [
+        [
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      ],
+      [
+        [
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      ],
+      [
+        [
+          20,
+          21,
+          22,
+          23,
+          24
+        ]
+      ],
+      [
+        [
+          25,
+          26,
+          27,
+          28,
+          29
+        ]
+      ]
+    ],
+    "schema": "totocaedres.surface-map.v1"
+  },
+  "topology": {
+    "boundary_component_count": 6,
+    "degree_excess": 9,
+    "edge_count": 15,
+    "errors": [],
+    "euler_characteristic": -2,
+    "face_count": 6,
+    "genus": 2,
+    "holes": 0,
+    "point_contacts": {
+      "0,1": 2,
+      "0,2": 1,
+      "0,3": 1,
+      "0,4": 2,
+      "0,5": 2,
+      "1,2": 1,
+      "1,3": 2,
+      "1,4": 1,
+      "1,5": 2,
+      "2,3": 2,
+      "2,4": 2,
+      "2,5": 1,
+      "3,4": 1,
+      "3,5": 1,
+      "4,5": 1
+    },
+    "segment_contacts": {
+      "0,1": 1,
+      "0,2": 1,
+      "0,3": 1,
+      "0,4": 1,
+      "0,5": 1,
+      "1,2": 1,
+      "1,3": 1,
+      "1,4": 1,
+      "1,5": 1,
+      "2,3": 1,
+      "2,4": 1,
+      "2,5": 1,
+      "3,4": 1,
+      "3,5": 1,
+      "4,5": 1
+    },
+    "valid": true,
+    "vertex_count": 7
+  }
+}

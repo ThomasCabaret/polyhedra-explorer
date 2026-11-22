@@ -1,0 +1,64 @@
+{
+  "started_at": "2026-11-21T12:29:49+01:00",
+  "updated_at": "2026-11-21T20:40:19+01:00",
+  "cycle": 3261,
+  "config": {
+    "geometry_candidates_per_cycle": 4,
+    "geometry_trials_per_action": 150,
+    "initial_geometry_trials_per_action": 5000,
+    "max_extra_edges": 8,
+    "max_faces": 9,
+    "max_genus": 3,
+    "max_holes": 2,
+    "max_symmetry_actions": 24,
+    "numerical_max_nfev": 750,
+    "numerical_restarts": 1,
+    "seed": 2026112101,
+    "signatures_per_genus_per_cycle": 4,
+    "sleep_between_cycles_seconds": 2,
+    "topology_trials_per_signature": 120
+  },
+  "totals": {
+    "errors": 1,
+    "exact_realizations": 163,
+    "geometry_attempts": 3438,
+    "numerical_realizations": 64,
+    "topology_attempts": 54667080,
+    "topology_unique": 7521,
+    "topology_valid": 531686
+  },
+  "by_genus": {
+    "0": {
+      "exact_realizations": 162,
+      "geometry_attempts": 162,
+      "numerical_realizations": 0,
+      "topology_attempts": 4205160,
+      "topology_unique": 162,
+      "topology_valid": 524009
+    },
+    "1": {
+      "exact_realizations": 1,
+      "geometry_attempts": 3252,
+      "numerical_realizations": 64,
+      "topology_attempts": 16820640,
+      "topology_unique": 7335,
+      "topology_valid": 7653
+    },
+    "2": {
+      "exact_realizations": 0,
+      "geometry_attempts": 24,
+      "numerical_realizations": 0,
+      "topology_attempts": 16820640,
+      "topology_unique": 24,
+      "topology_valid": 24
+    },
+    "3": {
+      "exact_realizations": 0,
+      "geometry_attempts": 0,
+      "numerical_realizations": 0,
+      "topology_attempts": 16820640,
+      "topology_unique": 0,
+      "topology_valid": 0
+    }
+  }
+}
