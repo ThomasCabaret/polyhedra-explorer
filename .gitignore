@@ -3,6 +3,7 @@ node_modules/
 coverage/
 dist/
 build/
+!/vendor/three/build/
 
 # Local configuration and logs
 .env

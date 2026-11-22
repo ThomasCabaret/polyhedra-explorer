@@ -1,4 +1,11 @@
-import { MODELS, MODEL_ORDER } from "../src/models.js";
+import { MODELS as BUILTIN_MODELS, MODEL_ORDER as BUILTIN_MODEL_ORDER } from "../src/models.js";
+import { GENERATED_MODELS, GENERATED_MODEL_ORDER } from "../src/generated-models.js";
+
+const MODELS = { ...BUILTIN_MODELS, ...GENERATED_MODELS };
+const MODEL_ORDER = [
+  ...GENERATED_MODEL_ORDER,
+  ...BUILTIN_MODEL_ORDER.filter((id) => !GENERATED_MODEL_ORDER.includes(id))
+];
 
 function edgeKey(a, b) {
   return a < b ? `${a}:${b}` : `${b}:${a}`;

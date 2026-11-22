@@ -1,16 +1,24 @@
 # Face-Neighbourly Polyhedra Explorer
 
-A small, static Three.js viewer for three unusual polyhedral surfaces:
+A small, static Three.js viewer for unusual polyhedral surfaces. The
+**[Totocaedres research project](research/totocaedres/README.md)** includes the
+[LaTeX research note](research/totocaedres/docs/finite_search_bounds.tex),
+[genus search programs](research/totocaedres/campaign/README.md), and
+[archived results and certificates](research/totocaedres/results/README.md).
+
+The built-in reference models are:
 
 1. **Szilassi polyhedron** - genus 1, 7 hexagonal faces, every pair of faces shares exactly one edge.
 2. **Mizhaev 2026 realization** - genus 3, 8 nonagonal faces, exact integer coordinates.
 3. **Rost-Vigh 2026 realization** - genus 3, 8 nonagonal faces, rational coordinates, combinatorially distinct from Mizhaev's example.
 
-The site is designed to be deployed directly with GitHub Pages. It has no build step, no backend, no analytics and no runtime dependency other than a pinned Three.js ES-module import from jsDelivr.
+The site is designed to be deployed directly with GitHub Pages or run fully
+offline. It has no build step, backend or analytics. Three.js r186.1 and the
+two control modules are vendored under `vendor/three/` with their MIT license.
 
 ## Features
 
-- One-click switching among all three realizations.
+- One-click switching among references and certified search realizations.
 - Orbit navigation by default: rotate and zoom around a locked model center.
 - Free-fly navigation with pointer lock: mouse look, `WASD`, `Q/E`, and `Shift` boost.
 - Adjustable face opacity, including fully transparent faces.
@@ -53,7 +61,9 @@ Open `http://127.0.0.1:8000/`. To use another port:
 .\serve.bat --port=8080
 ```
 
-The equivalent cross-platform command is `npm run serve`. This project has no packages to install, so `npm install` is not required.
+The equivalent cross-platform command is `npm run serve`. This project has no
+packages to install, so `npm install` and an Internet connection are not
+required.
 
 ### Python alternative
 
@@ -78,6 +88,21 @@ npm run validate
 On Windows, `validate.bat` runs the same check.
 
 The validator checks vertex/edge/face counts, closed-edge incidence, Euler characteristic, genus, and complete pairwise face adjacency.
+
+## Load Totocaedres search results
+
+From the repository root:
+
+```powershell
+cd research/totocaedres
+python -m pip install -e .
+python -m totocaedres export-viewer results/validation-campaign.json results/discovery/9b4c587e1cb3c920ac499cd6.json --output ../../src/generated-models.js
+```
+
+This regenerates `src/generated-models.js` at the repository root. Generated
+candidates include three geometry controls and the independently enumerated
+genus 1 discovery certificate. Run `npm run validate` from the repository root
+to check the generated and built-in meshes.
 
 ## Navigation
 

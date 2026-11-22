@@ -12,3 +12,6 @@ LICENSE text eol=lf
 *.md text eol=lf
 *.svg text eol=lf
 *.bat text eol=crlf
+
+# Preserve upstream Three.js indentation.
+vendor/three/** linguist-vendored whitespace=-space-before-tab

@@ -26,11 +26,20 @@ This viewer intentionally stores the published vertex coordinates and face-bound
 - The viewer transcribes the 24 rational vertex coordinates and eight nonagonal boundary cycles reported in the paper.
 - The arXiv paper is marked CC BY-NC-ND 4.0. This repository does not relicense the paper or its prose/figures; the source is cited here for the mathematical coordinate and incidence data used by the independent visualization.
 
+## Totocaedres search realizations
+
+The [archived results](research/totocaedres/results/README.md) retain exact
+rational certificates and provenance. Three runs started with reference maps
+and searched for geometry. The genus 1 discovery run enumerated its map first.
+The viewer converts exact coordinates to floating point for rendering.
+
 ## Software
 
 - Three.js r186.1, MIT License.
   - https://threejs.org/
   - https://www.npmjs.com/package/three/v/0.186.1
+  - The module, its core dependency, OrbitControls and PointerLockControls
+    are stored under `vendor/three/` so the viewer works without network access.
 
 ## Repository licensing note
 

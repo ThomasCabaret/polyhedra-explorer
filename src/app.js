@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { PointerLockControls } from "three/addons/controls/PointerLockControls.js";
-import { MODELS, MODEL_ORDER } from "./models.js";
+import { MODELS as BUILTIN_MODELS, MODEL_ORDER as BUILTIN_MODEL_ORDER } from "./models.js";
+import { GENERATED_MODELS, GENERATED_MODEL_ORDER } from "./generated-models.js";
 import {
   createPolygonGeometry,
   makeEdgeMesh,
@@ -9,6 +10,12 @@ import {
   topologySummary,
   uniqueEdges
 } from "./geometry.js";
+
+const MODELS = { ...BUILTIN_MODELS, ...GENERATED_MODELS };
+const MODEL_ORDER = [
+  ...GENERATED_MODEL_ORDER,
+  ...BUILTIN_MODEL_ORDER.filter((id) => !GENERATED_MODEL_ORDER.includes(id))
+];
 
 const dom = {
   canvas: document.querySelector("#scene-canvas"),
@@ -112,7 +119,7 @@ const flyRightVector = new THREE.Vector3();
 function faceColor(index, count, modelId) {
   const offsets = { szilassi: 0.03, mizhaev: 0.56, rostVigh: 0.78 };
   const color = new THREE.Color();
-  color.setHSL((offsets[modelId] + index / Math.max(count, 1)) % 1, 0.58, 0.57);
+  color.setHSL(((offsets[modelId] ?? 0.12) + index / Math.max(count, 1)) % 1, 0.58, 0.57);
   return color;
 }
 
